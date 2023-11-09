@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IronPulse Portal</string>
+    <string name="activity">活动</string>
+    <string name="attendance">到场人数</string>
+</resources>

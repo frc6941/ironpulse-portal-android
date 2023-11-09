@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">IronPulse Portal</string>
+    <string name="activity">Activity</string>
+    <string name="attendance">Attendance</string>
+</resources>
