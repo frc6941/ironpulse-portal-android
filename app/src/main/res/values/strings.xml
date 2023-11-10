@@ -2,4 +2,7 @@
     <string name="app_name">IronPulse Portal</string>
     <string name="activity">Activity</string>
     <string name="attendance">Attendance</string>
+    <string name="scan_qrcode">Scan the QRCode</string>
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
 </resources>

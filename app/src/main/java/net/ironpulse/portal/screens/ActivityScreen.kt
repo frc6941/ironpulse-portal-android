@@ -5,7 +5,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import net.ironpulse.portal.ui.theme.IronpulsePortalTheme
 
 @Composable
-fun ActivityView() {
+fun ActivityScreen() {
 
 }
 
@@ -13,6 +13,6 @@ fun ActivityView() {
 @Composable
 fun ActivityPreview() {
     IronpulsePortalTheme {
-        ActivityView()
+        ActivityScreen()
     }
 }

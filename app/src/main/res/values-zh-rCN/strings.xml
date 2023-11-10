@@ -3,4 +3,7 @@
     <string name="app_name">IronPulse Portal</string>
     <string name="activity">活动</string>
     <string name="attendance">到场人数</string>
+    <string name="scan_qrcode">扫描二维码</string>
+    <string name="home">首页</string>
+    <string name="settings">设置</string>
 </resources>

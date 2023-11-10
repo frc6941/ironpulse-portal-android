@@ -3,9 +3,11 @@ package net.ironpulse.portal.screens
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.NavigationBar
@@ -47,7 +49,17 @@ fun Main() {
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary
-                )
+                ),
+                navigationIcon = {
+                    navController.previousBackStackEntry?.let {
+                        IconButton(onClick = { navController.navigateUp() }) {
+                            Icon(
+                                imageVector = Icons.Filled.ArrowBack,
+                                contentDescription = "Localized description"
+                            )
+                        }
+                    }
+                }
             )
         },
         bottomBar = {
@@ -56,12 +68,12 @@ fun Main() {
                     NavigationBarItem(
                         selected = index == navigationSelectedItem,
                         label = {
-                            Text(navItem.label)
+                            Text(stringResource(id = navItem.label))
                         },
                         icon = {
                             Icon(
                                 navItem.icon,
-                                contentDescription = navItem.label
+                                contentDescription = stringResource(id = navItem.label)
                             )
                         },
                         onClick = {
@@ -90,11 +102,15 @@ fun Main() {
             modifier = Modifier.padding(paddingValues = innerPadding)
         ) {
             composable(Screens.Home.route) {
-                HomeScreen()
+                HomeScreen(navController)
             }
 
             composable(Screens.Settings.route) {
                 SettingsScreen()
+            }
+
+            composable(Screens.Activity.route) {
+                ActivityScreen()
             }
         }
     }

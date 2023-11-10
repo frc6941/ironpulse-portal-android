@@ -7,22 +7,24 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults.cardColors
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import net.ironpulse.portal.components.ActivityInfo
-import net.ironpulse.portal.ui.theme.IronpulsePortalTheme
+import net.ironpulse.portal.navigation.Screens
 import java.time.LocalDate
 import java.util.UUID
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .padding(top = 16.dp)
@@ -41,7 +43,14 @@ fun HomeScreen() {
                 .width(350.dp),
             colors = cardColors(
                 containerColor = MaterialTheme.colorScheme.primaryContainer
-            )
+            ),
+            onClick = {
+                navController.navigate(Screens.Activity.route) {
+                    popUpTo(navController.graph.id) {
+                        saveState = true
+                    }
+                }
+            }
         ) {
             ActivityInfo(
                 modifier = Modifier.padding(16.dp),
@@ -50,13 +59,5 @@ fun HomeScreen() {
                 id = UUID.randomUUID().toString()
             )
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun HomePreview() {
-    IronpulsePortalTheme {
-        HomeScreen()
     }
 }
